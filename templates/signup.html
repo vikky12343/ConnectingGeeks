@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link href="{% static 'assert/css/style1.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      
+
+</head>
+<body>
+      <br><br><br>
+
+ <div class="container">
+
+ <div class="row">
+ <div class="col-md-10 offset=md-1">
+ <div class="row">
+     <div class="col-md-5 register-left">
+ 	      <h3>Join Us Today</h3>
+ 	      <p><h1><b>Connecting Geeks</b><h1></b></p><br>
+ 	      	<h3>A onestop platform for all geeks</h3>
+ 	      <button onclick="window.location.href = '/login/';" type ="button" class="btn btn-primary">Login Here</button>
+            <button onclick="window.location.href = '/home/';" type ="button" class="btn btn-primary">Home</button>
+      </div>
+
+      <div class="col-md-7 register-right">
+
+      	  <h2>Register Here</h2>
+
+      	  <div class="register-form">
+                  <form action="/web_sign" onsubmit="return validation()" method="POST">{% csrf_token %}
+      	  		
+                 
+                  <div class="form-group">
+	              <input type="text" class="form-control" name="username" value="" placeholder="Username " id="user" autocomplete="off">
+                    <span id="user1" class="text-danger font-weight-bold"></span>
+                  </div>
+
+
+
+      	  	        <div class="form-group">
+                    <input type="text" class="form-control" name="first_name" value="" placeholder="First Name " id="first"  autocomplete="off">
+                    <span id="first1" class="text-danger font-weight-bold"></span>
+      	           </div>
+
+            <div class="form-group">
+      	  	<input type="text" class="form-control" name="last_name" id="last" value="" placeholder="Last Name"  autocomplete="off">
+                  <span id="last1" class="text-danger font-weight-bold"></span>
+      	  	</div>
+
+      	  	<div class="form-group">
+            <input type="text" class="form-control" name="email" id="email12" value="" placeholder="Email" autocomplete="off">
+            <span id="email1" class="text-danger font-weight-bold"></span>
+      	  	</div>
+
+      	  	<div class="form-group">
+      	  	<input type="password" class="form-control" id="pass1" name="password1" value="" placeholder="Password" autocomplete="off">
+                  <span id="confirm1" class="text-danger font-weight-bold"></span>
+      	  	</div>
+
+      	  	<div class="form-group">
+      	  	<input type="password" class="form-control" id="pass2" name="password2" value="" placeholder="Confirm Password"  autocomplete="off">
+                  <span id="confirm2" class="text-danger font-weight-bold"></span>
+      	  	</div>
+
+      	  
+      	     <div class="form-group">
+      	  	 <button type="submit" class="btn btn-primary">Register</button>
+      	     </div>
+                 <div>
+                        {% for message in messages %}
+                        <h3 style="color:blue"> {{message}}</h3>
+                        {% endfor %}
+                 </div>
+      	 </form>
+      	  
+           </div>
+</div>
+</div>
+</div>	
+</div>
+</div>
+<script>
+
+function validation()
+           {
+                var user=document.getElementById('user').value;
+                var first=document.getElementById('first').value;
+                var last=document.getElementById('last').value;
+                var email=document.getElementById('email12').value;
+                var pass1=document.getElementById('pass1').value;
+                var pass2=document.getElementById('pass2').value;
+
+
+                if(user=="")
+                {
+                   document.getElementById('user1').innerHTML="**Please fill the username field";
+                   return false;
+                }
+                if((user.length<5)||(user.length>15))
+                {
+                  document.getElementById('user1').innerHTML="**Username length must be between 5 and 15";
+                   return false;
+                }
+                if(!isNaN(user))
+                {
+                  document.getElementById('user1').innerHTML="**Only digits are not allowed";
+                   return false;
+                }
+
+                 if(first=="")
+                {
+                  document.getElementById('first1').innerHTML="**Please fill the First name field";
+                   return false;
+
+                }
+                if(last=="")
+                {
+
+                  document.getElementById('last1').innerHTML="**Please fill the Last name field";
+                   return false;
+                }
+                if(email=="")
+                {
+                   document.getElementById('email1').innerHTML="**Please fill the Email field";
+                   return false;
+                }
+                
+                if(email.indexOf('@')<=0)
+                {
+                  document.getElementById('email1').innerHTML="**Invalid email";
+                   return false;
+                }
+
+                if((email.charAt(email.length-4)!='.')&&(email.charAt(email.length-3)!='.'))
+                {
+                  document.getElementById('email1').innerHTML="**Invalid email";
+                   return false;
+                }
+
+
+
+
+
+
+
+
+                if(pass1=="")
+               {
+                   document.getElementById('confirm1').innerHTML="**Please fill the Password field";
+                   return false;
+                }
+                if((pass1.length<=8)||(pass1.length>=20))
+                {
+                  document.getElementById('confirm1').innerHTML="**Password length must be between 8 and 20";
+                   return false;
+                }
+
+                if(pass2=="")
+                {
+                   document.getElementById('confirm2').innerHTML="**Please fill the Confirm Password field";
+                   return false;
+                }
+                if(pass1!=pass2)
+                {
+                  document.getElementById('confirm2').innerHTML="**Password does not match";
+                   return false;
+                }
+
+
+           }
+
+</script>
+</body>
+</html>

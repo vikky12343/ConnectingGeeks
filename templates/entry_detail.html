@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+     <style type="text/css" media="screen">
+      body{
+        background-color: #a7b6c4;
+
+
+         
+
+
+
+      }    
+    </style>
+
+
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-12">
+        <br><br><br><br>
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          {% if object.entry_image %}
+          <img class="card-img-top" src="{{object.entry_image.url}}" alt="Card image cap">
+          {% endif %}
+          <div class="card-body">
+            <h2 class="card-title">{{object.entry_title}}</h2>
+            <p class="card-text">{{object.entry_text| safe}}</p>
+
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{object.entry_date}} by
+
+            <span class="text-info mr-2">{{object.entry_author}} </span>
+            {% if request.user == object.entry_author %}
+            <span><a href="{% url 'post-edit' entry.pk %}"> Edit Post </a> | <a href="{% url 'post-delete' entry.pk%}"> Remove Post</a></span>
+            {%  endif %}
+
+          </div>
+          <div class="fb-like" data-href="http://127.0.0.1:8000/entry/{{object.id}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+          <div class="fb-comments" data-href="http://127.0.0.1:8000/entry/{{object.id}}" data-width="" data-numposts="5"></div>
+        </div>
+
+{% endblock %}
+        

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-12">
+      
+<br><br>
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            Update Blog
+            </div>
+          <div class="card-body">
+            <form  method="POST">
+              {% csrf_token %}
+              {{ form.as_p}}
+
+              {{ form.media }}
+              <button type="submit" class="btn btn-primary">Update Blog</button>
+            
+            </form>
+          </div>
+          </div>
+        </div>
+
+{% endblock %}
+        
+          

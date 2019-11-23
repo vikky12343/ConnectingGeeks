@@ -1,0 +1,26 @@
+  
+{% extends 'base.html'%}
+
+{% block title %}
+	Delete {{object.entry_title}}
+{% endblock%}
+
+{% block content %}
+	<div class="new_post">
+		<form method="POST">
+			{% csrf_token%}
+			<br><br>
+			<h2>Are You sure ? </h2>
+			<p>Delete : {{object.entry_title}}</p>
+			<div><button class="btn btn-primary">Delete</button></div>
+
+		</form>
+		<br>
+
+		<button onclick="window.location.href = '/blog/' "class="btn btn-primary" >Cancel</button>
+
+		
+		
+	</div>
+
+{% endblock %}

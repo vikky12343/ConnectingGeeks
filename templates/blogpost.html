@@ -1,0 +1,67 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <style type="text/css" media="screen">
+      body{
+        background-color: #a7b6c4;
+
+
+         
+
+
+
+      }    
+    </style>
+    
+      <!-- Blog Entries Column -->
+      <div class="col-md-10">
+    
+        {% for t in entry %}
+
+        
+      
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <!--img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"-->
+          <div class="card-body">
+
+         <!-- {% if t.entry_image %}
+
+          <img class="card-img-top" src="{{t.entry_image}} " alt="image">
+          {% endif %} -->
+          
+            <h2 class="card-title">{{t.entry_title}}</h2>
+            
+            <p class="card-text">{{t.entry_text|striptags|slice:':500'}}</p>
+            <a href="{% url 'entry_detail' t.pk %}" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{t.entry_date}} by
+            <span class="text-info mr-2">{{t.entry_author}}</span>
+          </div>
+        </div>
+
+       {% endfor %}
+
+        
+          {% if is_paginated %}
+        <!-- % endif Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.previous_Page_number}}">&larr; Previous Page</a>
+          </li>
+          {% endif %}
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{page_obj.next_Page_number}}">Next Page &rarr;</a>
+          </li>
+          {% endif %}
+        </ul>
+        {% endif %}
+
+      </div>
+{% endblock %}

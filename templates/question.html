@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+<form action="/question_submit/" method="POST" accept-charset="utf-8">
+    {% csrf_token %}
+    <section>
+      <div class="text" >
+        <img src="http://placehold.it/100/100"/>
+        <textarea name="post" placeholder="What's in your mind"></textarea>
+        <input type="submit" value="post"/>
+      </div>
+     </section>
+ </form>
+    <div class="overlay"></div>
+    <link href="{% static 'assert/css/style3.css' %}" rel="stylesheet" type="text/css" media="all" >
+    <link href="{% static 'assert/vendor/jquery/questionjquery.js' %}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	  
+<style type="text/css" media="screen">
+  body{
+    background-color: #bac6d1;
+  }
+  
+</style>
+
+    
+      <div class="col-md-10">
+        <br><br>
+        {% for q in question %}
+       
+        <!-- Blog Post -->
+        <div class="card mb-4 ">
+          <h2 class="card-title">{{q.q_text}}</h2>
+           <a href="{% url 'question_detail' q.pk %}" class="btn btn-primary">View Answer &rarr;</a>
+          
+            
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{q.q_date}} by
+            <span class="text-info mr-2">{{q.q_auther}}</span>
+          </div><br><br>
+          {% endfor %}
+
+          </div>
+
+
+
+
+          
+         
+
+
+
+
+
+
+
+
+{% endblock %}

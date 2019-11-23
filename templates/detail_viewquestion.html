@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<style type="text/css" media="screen">
+  body{
+    background-color:#abd5ff ;
+    
+    
+  }
+  
+</style>
+
+
+	
+      <div class="col-md-8">
+        <br><br>
+       
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <h2 class="card-title">{{object.q_text}}</h2>
+           
+            
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{object.q_date}} by
+            <span class="text-info mr-2">{{object.q_auther}}</span>
+          </div>
+         
+
+          </div>
+          
+          <div class="fb-like" data-href="http://127.0.0.1:8000/entry/{{object.id}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+          <div class="fb-comments" data-href="http://127.0.0.1:8000/entry/{{object.id}}" data-width="" data-numposts="5"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
