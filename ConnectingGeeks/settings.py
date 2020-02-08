@@ -138,7 +138,7 @@ USE_TZ = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'connectinggeeksoffice@gmail.com'
-EMAIL_HOST_PASSWORD = '1*#28K8D'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 
